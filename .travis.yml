@@ -14,7 +14,7 @@ before_install:
   - gcloud config set project phrasal-method-264900
   - gcloud config set compute/zone us-west1-a
   - gcloud container clusters get-credentials multi-cluster
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_ACCESS_TOKEN" | docker login --username "$DOCKER_USERNAME" --password-stdin
   - docker build -t dimaka77/react-test -f ./client/Dockerfile.dev ./client
 script:
   - docker run -e CI=true dimaka77/react-test npm run test
